@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity / GTD method</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body class="content-wrap">
+    <header>
+        <img src="./image/images.png" alt="logo" width="100px">
+        <h1><span>BE</span>
+            productive</h1>
+        <h1>
+            Getting Things Done.
+            David Allen's art of stress-free productivity
+        </h1>
+        <div>
+            Five-step process for Getting Things Done
+        </div>
+
+    </header>
+
+    <main>
+        <section class="inbox">
+            <h3>
+                Step 1. Capture
+            </h3>
+            <p>
+                Collect all what has your attention.
+            </p>
+            <div id="myInbox" class="header">
+                <h2>Inbox</h2>
+                <input type="text" id="myInput" placeholder="Write your idea ... ">
+                <span onclick="newElement()" class="addBtn">Add</span>
+            </div>
+            <ul id="myUL"></ul>
+        </section>
+        <section>
+            <h3>
+                Step 2. Clarifying
+            </h3>
+            <p>
+                Process what it means.
+            </p>
+            <div class="header" >
+                <ul class="question1"></ul>
+                <p>Is it actionable?</p>
+                <div class="two_columns">
+                    <button onclick="optYes()" class="btnYes addBtn">Yes</button><button onclick="optNo()" class="btnNo addBtn">No</button>
+                </div>
+            </div>
+            <div class="two_columns">
+                <ul class="ul2Yes">
+                </ul>
+                <ul class="ul2No">
+                </ul>
+            </div>
+        </section>
+
+        <script type="text/javascript" src="js\to do list.js"></script>
+
+    </main>
+<script src="./script.js"></script>
+</body>
+
+</html>
