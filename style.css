@@ -5,6 +5,14 @@
   .SberCraft-game-4-hex { color: #9FF288; }
   .SberCraft-game-5-hex { color: #F24F13; }
 
+  .SberCraft-game-1-hex { color: #64c3fb; }
+  .SberCraft-game-1-hex { color: #325ae0; }
+  .SberCraft-game-5-hex { color: #fcfcfc; }
+  .SberCraft-game-5-hex { color: #d8f42e; }
+  .SberCraft-game-5-hex { color: #f5c0dc; }
+  .SberCraft-game-5-hex { color: #ffffff; }
+  
+
 /* Global styles
 ------------------------------------*/
 html {
@@ -25,7 +33,7 @@ html {
   ul {
     margin: 0;
     padding: 0;
-    background: #eee;
+    background: #ffffff;
   }
   
 /* Style the list items */
@@ -33,7 +41,6 @@ html {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
-
     font-size: 18px;
     transition: 0.2s;
     list-style: none;
@@ -85,13 +92,13 @@ html {
   
   .close:hover {
     /* background-color: ; */
-    background-color: #F24F13;
+    background-color: #d8f42e;
     color: white;
   }
   
   /* Style the header */
   .header {
-    background-color: #4EA696;
+    background-color: #64c3fb;
     padding: 30px 30px 30px 30px;
     /* color: white; */
     text-align: left;
@@ -116,12 +123,22 @@ html {
   }
   
   /* Style the "Add" button */
-  .addBtn {
-    padding: 10px;
+  .button {
+    padding: 8px;
     width: 25%;
     background: rgba(14, 34, 38, 0.8);
     color: white;
-    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+  }
+  .addBtn {
+    padding: 8px;
+    width: 25%;
+    background: rgba(14, 34, 38, 0.8);
+    color: white;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -140,7 +157,6 @@ html {
   }
   .two_columns ul, .two_columns button {
     flex: 0 0 50%;
-
   }
 
 

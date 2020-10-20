@@ -11,11 +11,10 @@
 <body class="content-wrap">
     <header>
         <img src="./image/images.png" alt="logo" width="100px">
-        <h1><span>BE</span>
-            productive</h1>
+        <h1><span>BE</span> productive</h1>
         <h1>
-            Getting Things Done.
-            David Allen's art of stress-free productivity
+            Getting Things Done by David Allen's<br>
+            Art of stress-free productivity
         </h1>
         <div>
             Five-step process for Getting Things Done
@@ -34,7 +33,7 @@
             <div id="myInbox" class="header">
                 <h2>Inbox</h2>
                 <input type="text" id="myInput" placeholder="Write your idea ... ">
-                <span onclick="newElement()" class="addBtn">Add</span>
+                <button onclick="newElement()" class="addBtn">Add</button>
             </div>
             <ul id="myUL"></ul>
         </section>
@@ -43,29 +42,58 @@
                 Step 2. Clarifying
             </h3>
             <p>
-                Process what it means.
+                Process what it means
             </p>
             <div class="header" >
                 <ul class="question1"></ul>
-                <p>Is it actionable?</p>
+                <p>Is this task requires action?</p>
                 <div class="two_columns">
-                    <button onclick="optYes()" class="btnYes addBtn">Yes</button><button onclick="optNo()" class="btnNo addBtn">No</button>
+                    <button onclick="optYes()" class="btnYes button">Yes</button><button onclick="optNo()" class="btnNo button">No</button>
                 </div>
             </div>
             <div class="two_columns">
-                <ul class="ul2Yes">
-                </ul>
+                <ul class="ul2Yes"></ul>
                 <ul class="ul2No">
+                    <div class="two_columns">
+                        <button class="button">Trash</button>
+                        <button class="button">Incubate</button>
+                    </div>
                 </ul>
             </div>
         </section>
-        <div>
-            nnjm
-        </div>
-        <script type="text/javascript" src="js\to do list.js"></script>
-
+        <section>
+            <div class="header" >
+                <ul class="question2"></ul>
+                <p>Will it take less than 2 minutes?</p>
+                <div class="two_columns">
+                    <button onclick="opt2min()" class="btnYes button">Yes</button><button onclick="opt2No()" class="btnNo button">No</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="header" >
+                <ul class="question3"></ul>
+                <p>Can you delegate this task?</p>
+                <div class="two_columns">
+                    <button onclick="opt3Yes()" class="btn3Yes button">Yes</button><button onclick="opt3No()" class="btn3No button">No</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>
+                Step 3. Organize
+            </h3>
+            <p>
+                Put where it belongs
+            </p>
+            <div class="header" >
+                <div class="two_columns">
+                    <button onclick="opt3Yes()" class="btn4Calendar button">Add to calendar</button><button onclick="opt3No()" class="btn4List button">Action list</button>
+                </div>
+            </div>
+        </section>
     </main>
-
+<script src="./script.js"></script>
 </body>
 
 </html>
