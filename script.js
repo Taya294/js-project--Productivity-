@@ -2,6 +2,7 @@
 
 // let itemsArray = localStorage.getItem('myKey') ? JSON.parse(localStorage.getItem('myKey')) : {};
 
+// функція "getData()" зберігає дані в localStorage
 function getData() {
   const itemsArray = {
   step1: [],
@@ -19,55 +20,64 @@ function getData() {
   },
   step3: {
     calendar: [],
-    list: [],
+    list1: [],
   }
   };
 
   const step1 = document.getElementById("myUL");
   for (let i=0; i < step1.childNodes.length; i++) {
     let li = step1.childNodes[i];
-    itemsArray.step1.unshift(li.childNodes[0].innerText);
+    itemsArray.step1.push(li.innerText);
   }
-  const step2yes = document.getElementsByClassName("ul2Yes")[0];
+  const step2yes = document.querySelector(".ul2yes");
   for (let i=0; i < step2yes.childNodes.length; i++) {
     let li = step2yes.childNodes[i];
-    itemsArray.step2.yes.unshift(li.innerText);
+    itemsArray.step2.yes.push(li.innerText);
+  }
+  const step2no = document.querySelector(".ul2no");
+  for (let i=0; i < step2no.childNodes.length; i++) {
+    let li = step2no.childNodes[i];
+    itemsArray.step2.no.push(li.innerText);
   }
 
   localStorage.setItem("myKey", JSON.stringify(itemsArray));
 }
 window.addEventListener("click", getData);
 
-// 1. функція яка бере об'єкт з масивами і по ньому будує веб сторінку з відповідними пунктами "setData(obj)"
+//  Функція "setData()" яка бере дані з localStorage і будує по цих даних сторінку.
 
 function setData() {
   const raw = localStorage.getItem("myKey");
   const myKey1 = JSON.parse(raw).step1;
-
   for (let i=0; i < myKey1.length; i++) {
     let li = document.createElement("li");
-    li.innerText = myKey1[i];
+    let div = document.createElement("div");
+    li.prepend(div);
+    div.innerText = myKey1[i];
     document.getElementById("myUL").appendChild(li);
   }
+
   const myKey2yes = JSON.parse(raw).step2.yes;
   for (let i=0; i < myKey2yes.length; i++) {
     let li = document.createElement("li");
-    li.innerText = myKey2yes[i];
-    document.getElementsByClassName("ul2Yes")[0].prepend(li);
+    let div = document.createElement("div");
+    li.prepend(div);
+    div.innerText = myKey2yes[i];
+    document.getElementsByClassName("ul2yes")[0].appendChild(li);
   }
+
   const myKey2no = JSON.parse(raw).step2.no;
   for (let i=0; i < myKey2no.length; i++) {
     let li = document.createElement("li");
-    li.innerText = myKey2no[i];
-    document.getElementsByClassName("ul2No")[0].prepend(li);
+    let div = document.createElement("div");
+    li.prepend(div);
+    div.innerText = myKey2no[i];
+    document.getElementsByClassName("ul2no")[0].prepend(li);
   }
 }
 document.addEventListener("DOMContentLoaded", setData);
 
 
-
-
-// 2. написати функцію яка будує об'єкт "getData()" по тим даним які в тебе є на сторінці
 
 // 3. Після кожної зміни на сторінці необхідно буде викликати функцію getData і зберегти результат в LocalStorage
 
@@ -80,9 +90,11 @@ document.addEventListener("DOMContentLoaded", setData);
 function newElement() {
   let li = document.createElement("li");
   let inputValue = document.getElementById("myInput").value;
+  let div = document.createElement("div");
+  li.prepend(div);
   let t = document.createTextNode(inputValue);
-  li.appendChild(t);
-
+  div.appendChild(t);
+  
   if (inputValue === '') {
     alert("You must write something!");
   } else {
@@ -91,20 +103,19 @@ function newElement() {
     elemRemove();
   }
   document.getElementById("myInput").value = "";
+  
+  // let span = document.createElement("SPAN");
+  // let txt = document.createTextNode("\u00D7");
+  // span.className = "close";
+  // span.appendChild(txt);
+  // li.appendChild(span);
 
-  let span = document.createElement("SPAN");
-  let txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      let div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-  getData();
+  // for (i = 0; i < close.length; i++) {
+  //   close[i].onclick = function() {
+  //     let div = this.parentElement;
+  //     div.style.display = "none";
+  //   }
+  // }
 } 
 
 // Create a "close" button and append it to each list item
@@ -136,35 +147,117 @@ function closeBtn() {
 // Копіювання вмісту останнього пункту в поле для запитання
 
 function lastElement() {
-  let elem = document.getElementById("myUL").lastElementChild;
-  elem.style.backgroundColor = "rgba(242, 79, 19, 0.2)";
-  let copy = elem.cloneNode(true);
-  document.getElementsByClassName("question1")[0].append(copy);
+  let copy = document.getElementById("myUL").lastChild.cloneNode(true);
+  document.querySelector(".question1").append(copy);
 }
 document.addEventListener("DOMContentLoaded", lastElement);
-// Перерозподілення останнього елементу в новий список.
+
+function lastElement2() {
+  let copy = document.querySelector(".ul2yes").lastChild.cloneNode(true);
+  document.querySelector(".question2").append(copy);
+}
+document.addEventListener("DOMContentLoaded", lastElement2);
+
+function lastElement3() {
+  let copy = document.querySelector(".no2min").lastChild.cloneNode(true);
+  document.querySelector(".question3").append(copy);
+}
+document.addEventListener("DOMContentLoaded", lastElement3);
+
+function lastElement4() {
+  let copy = document.querySelector(".opt3no").lastChild.cloneNode(true);
+  document.querySelector(".step3").append(copy);
+}
+document.addEventListener("DOMContentLoaded", lastElement4);
+
+
+// Functionality of buttons when you click on them.Redistribute the last list item to a new list.
+
 function optYes() {
-  let elemQuestion = document.getElementById("myUL").lastElementChild;
-  elemQuestion.removeAttribute("style");
-  if (elemQuestion === null) {
+  const elem = document.getElementById("myUL").lastChild;
+  if (elem === null) {
     alert("Empty!");
   } else {
-    let elem = document.getElementsByClassName("ul2Yes")[0].prepend(elemQuestion);
+    document.querySelector(".ul2yes").prepend(elem);
   }
   lastElement();
   elemRemove();
 }
 function optNo() {
-  let elemQuestion = document.getElementById("myUL").lastElementChild;
-  elemQuestion.removeAttribute("style");
-  if (elemQuestion === null) {
+  const elem = document.getElementById("myUL").lastChild;
+  if (elem === null) {
     alert("Empty!");
   } else {
-    let elem = document.getElementsByClassName("ul2No")[0].prepend(elemQuestion);
+    document.querySelector(".ul2no").prepend(elem);
   }
   lastElement();
   elemRemove();
 }
 function elemRemove() {
-  document.getElementsByClassName("question1")[0].children[0].remove();
+  document.querySelector(".question1").children[0].remove();
 } 
+
+function trash() {
+  const elem = document.querySelector(".step2question").lastChild;
+  if (elem === null) { 
+    alert("Empty");
+  } else {
+    elem.remove();
+  }
+}
+function incubate() {
+  const elem = document.querySelector(".step2question").lastChild;
+    if (elem === null) {
+    alert("Empty!");
+    } else {
+    document.querySelector(".incubateList").prepend(elem);
+  }
+}
+function yes2min() {
+  const elem = document.querySelector(".ul2yes").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".yes2min").prepend(elem);
+  }
+}
+function no2min() {
+  const elem = document.querySelector(".ul2yes").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".no2min").prepend(elem);
+  }
+}
+function opt3yes() {
+  const elem = document.querySelector(".no2min").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".opt3yes").prepend(elem);
+  } 
+}
+function opt3no() {
+  const elem = document.querySelector(".no2min").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".opt3no").prepend(elem);
+  } 
+}
+function calendar() {
+  const elem = document.querySelector(".opt3no").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".calendar").prepend(elem);
+  } 
+}
+function list() {
+  const elem = document.querySelector(".opt3no").lastChild;
+  if (elem === null) {
+    alert("Empty!");
+  } else {
+    document.querySelector(".list").prepend(elem);
+  } 
+}

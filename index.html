@@ -52,13 +52,12 @@
                 </div>
             </div>
             <div class="two_columns">
-                <ul class="ul2Yes"></ul>
-                <ul class="ul2No">
-                    <div class="two_columns">
-                        <button class="button">Trash</button>
-                        <button class="button">Incubate</button>
-                    </div>
-                </ul>
+                <ul class="ul2yes"></ul>
+                <ul class="ul2no step2question"></ul>   
+            </div>
+            <div div class="four_columns">
+                <button onclick="trash()" class="button">Trash</button>
+                <button onclick="incubate()" class="button incubate">Incubate</button>
             </div>
         </section>
         <section>
@@ -66,8 +65,12 @@
                 <ul class="question2"></ul>
                 <p>Will it take less than 2 minutes?</p>
                 <div class="two_columns">
-                    <button onclick="opt2min()" class="btnYes button">Yes</button><button onclick="opt2No()" class="btnNo button">No</button>
+                    <button onclick="yes2min()" class="btnYes button">Yes</button><button onclick="no2min()" class="btnNo button">No</button>
                 </div>
+            </div>
+            <div class="two_columns">
+                <ul class="yes2min"></ul>
+                <ul class="no2min"></ul>   
             </div>
         </section>
         <section>
@@ -75,8 +78,12 @@
                 <ul class="question3"></ul>
                 <p>Can you delegate this task?</p>
                 <div class="two_columns">
-                    <button onclick="opt3Yes()" class="btn3Yes button">Yes</button><button onclick="opt3No()" class="btn3No button">No</button>
+                    <button onclick="opt3yes()" class="btn3Yes button">Yes</button><button onclick="opt3no()" class="btn3No button">No</button>
                 </div>
+            </div>
+            <div class="two_columns">
+                <ul class="opt3yes"></ul>
+                <ul class="opt3no"></ul>   
             </div>
         </section>
         <section>
@@ -87,10 +94,30 @@
                 Put where it belongs
             </p>
             <div class="header" >
+                <ul class="step3"></ul>
                 <div class="two_columns">
-                    <button onclick="opt3Yes()" class="btn4Calendar button">Add to calendar</button><button onclick="opt3No()" class="btn4List button">Action list</button>
+                    <button onclick="calendar()" class="btn4Calendar button">Add to calendar</button>
+                    <button onclick="list()" class="btn4List button">Action list</button>
                 </div>
             </div>
+            <div class="two_columns">
+                <ul class="calendar"></ul>
+                <ul class="list"></ul>   
+            </div>
+        </section>
+        <section>
+            <div>            
+                <h3>
+                    Your to-do lists
+                </h3>
+                <p>
+                    Tasks that are still worth thinking about
+                </p>
+                <ul class="incubateList"></ul>
+            </div>
+            <div></div>
+            <div></div>
+
         </section>
     </main>
 <script src="./script.js"></script>
