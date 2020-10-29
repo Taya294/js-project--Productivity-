@@ -100,7 +100,6 @@ function setData() {
 
   // Restore the questions
   lastElem(document.querySelector(".question1"), document.getElementById("myUL"));   // last element for question1
-  document.querySelector(".question1").lastChild.firstChild.remove();
   lastElem(document.querySelector(".question2"), document.querySelector(".ul2yes"));  // last element for question2
   lastElem(document.querySelector(".question3"), document.querySelector(".no2min"));  // last element for question3
   lastElem(document.querySelector(".step3"), document.querySelector(".opt3no"));  // last element for question4
@@ -110,9 +109,8 @@ document.addEventListener("DOMContentLoaded", setData);
 //_______________ Creating interactive list ________________
 //__________________________________________________________
 
-// Create a new list item when clicking on the "Add" button
-const input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
+// Create a new list item when press "enter"
+document.getElementById("myInput").addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     let li = document.createElement("li");
@@ -145,32 +143,42 @@ input.addEventListener("keyup", function(event) {
   }
 });
 // Add a "checked" symbol when clicking on a list item
-const checkList = document.querySelector(".check");
-checkList.addEventListener('click', function(ev) {
+const checkList = document.querySelectorAll(".check");
+for (let i of checkList) {
+  i.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   } else if (ev.target.tagName === 'DIV' && ev.target.parentElement.tagName === 'LI') {
     ev.target.parentElement.classList.toggle('checked');
   }
 }, false);
+}
+function clearItems() {
+  const items = document.querySelectorAll(".checked");
+  if(items === null) {
+    return;
+  }
+  for (let item of items) {
+    item.remove();
+  }
+}
 
-//_______________ Creating interactive list ________________
+//_______________ Functionality of buttons _________________
 //__________________________________________________________
 
-// Копіювання вмісту останнього пункту в поле для запитання
+// Copy the contents of the last list item to the question box
 function lastElem(q, w) {
-  if (q.children.length !== 0) {
+  if (q.children.length !== 0 || w.lastChild === null) {
     return;
   }
   let copy = w.lastChild.cloneNode(true);
   q.append(copy);
 }
-// Видалення елемента в полі запитання
+// Delete an item in the question box
 function elemRemove(e) {
   e.children[0].remove();
 } 
 // Functionality of buttons when you click on them. Redistribute the last list item to a new list.
-
 function optYes() {
   const elem = document.getElementById("myUL").lastChild.lastChild.innerText;
   const newElem = document.createElement("li");
@@ -278,3 +286,4 @@ function list() {
   elemRemove(document.querySelector(".step3"));
   lastElem(document.querySelector(".step3"), document.querySelector(".opt3no"));    // last element for question4
 }
+
