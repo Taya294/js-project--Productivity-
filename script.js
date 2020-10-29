@@ -177,6 +177,9 @@ function lastElem(q, w) {
 }
 // Delete an task in the question box
 function elemRemove(e) {
+  if(e.children[0] === undefined) {
+    return;
+  }
   e.children[0].remove();
 } 
 // Functionality of buttons when you click on them. Redistribute the last list task to a new list.
@@ -194,6 +197,9 @@ function optYes() {
   
   elemRemove(document.querySelector(".question1"));
   lastElem(document.querySelector(".question1"), document.getElementById("myUL"));     // last element for question1 
+  if (document.querySelector(".question1").lastChild == null) {
+    return;
+  }
   document.querySelector(".question1").lastChild.firstChild.remove();
   lastElem(document.querySelector(".question2"), document.querySelector(".ul2yes"));  // last element for question2
 }
@@ -211,6 +217,9 @@ function optNo() {
   
   elemRemove(document.querySelector(".question1"));
   lastElem(document.querySelector(".question1"), document.getElementById("myUL"));  // last element for question2
+  if (document.querySelector(".question1").lastChild == null) {
+    return;
+  }
   document.querySelector(".question1").lastChild.firstChild.remove();
 }
 function trash() {
