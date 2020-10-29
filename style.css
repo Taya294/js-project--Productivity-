@@ -17,16 +17,40 @@
 ------------------------------------*/
 html {
 	box-sizing: border-box;
-	font-family: arial, helvetica, sans-serif;
+  font-family: arial, helvetica, sans-serif;
+  background-color: rgb(238, 238, 238);
 }
 *,*:before,*:after {
 	box-sizing: inherit;
+}
+img {
+  max-width: 100%;
 }
 .content-wrap {
   max-width: 800px;
   width: 85%;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 30px 50px;
+  background-color: white;
+  box-shadow: 0 0 25px rgba(48, 48, 48, 0.2);
+}
+h1 {
+  color: #134351;
+  font-size: 26px;
+  text-align: right;
+}
+h2 {
+  color: #134351;
+}
+h3 {
+  margin-top: 50px;
+  color: #134351;
+  text-transform: uppercase;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
   
 /* Remove margins and padding from the list */
@@ -37,7 +61,7 @@ html {
   }
   
 /* Style the list items */
-  ul li {
+  ul li, .check li:last-child {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -57,23 +81,22 @@ html {
     background: #f9f9f9;
   } 
   
-  /* Darker background-color on hover */
-  ul li:hover {
-    border: 1px solid #859699;
-
-  }
   ul li:last-child {
     background-color: rgba(242, 79, 19, 0.2);
   }
+  /* Darker background-color on hover */
+  ul li:hover, .check li:last-child:hover {
+    background: rgba(136, 136, 136, 0.5);;
+  }  
   /* When clicked on, add a background color and strike out text */
-  /* ul li.checked {
+  ul li.checked, .check li:last-child.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
-  } */
-  
+  }
+
   /* Add a "checked" mark when clicked on */
-  /* ul li.checked::before {
+  ul li.checked::before {
     content: '';
     position: absolute;
     border-color: #fff;
@@ -84,7 +107,7 @@ html {
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
-  } */
+  }
   
   /* Style the close button */
   .close {
@@ -96,7 +119,7 @@ html {
   
   .close:hover {
     /* background-color: ; */
-    background-color: #d8f42e;
+    background-color: #df3a4a;
     color: white;
   }
   
@@ -120,7 +143,7 @@ html {
     margin: 0;
     border: none;
     border-radius: 5px;
-    width: 75%;
+    width: 100%;
     padding: 10px;
     float: left;
     font-size: 16px;

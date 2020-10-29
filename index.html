@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productivity / GTD method</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://kit.fontawesome.com/a2f3f44874.js" crossorigin = "anonymous"></script>
 </head>
 
 <body class="content-wrap">
     <header>
         <img src="./image/images.png" alt="logo" width="100px">
-        <h1><span>BE</span> productive</h1>
         <h1>
             Getting Things Done by David Allen's<br>
-            Art of stress-free productivity
+            "Art of stress-free productivity"
         </h1>
-        <div>
-            Five-step process for Getting Things Done
-        </div>
-
     </header>
 
     <main>
+        <img src="./image/5steps.png" alt="">
         <section class="inbox">
-            <h3>
-                Step 1. Capture
+            <h3><i class="far fa-folder-open"></i> Step 1. Capture
             </h3>
             <p>
                 Collect all what has your attention.
             </p>
             <div id="myInbox" class="header">
-                <h2>Inbox</h2>
+                <h2><i class="fas fa-inbox"></i> Inbox</h2>
                 <input type="text" id="myInput" placeholder="Write your idea ... ">
-                <button onclick="newElement()" class="addBtn">Add</button>
             </div>
-            <ul id="myUL"></ul>
+            <ul id="myUL" class = "close_btn"></ul>
         </section>
         <section>
-            <h3>
+            <h3><i class="fas fa-list"></i></i>
                 Step 2. Clarifying
             </h3>
             <p>
@@ -56,8 +50,8 @@
                 <ul class="ul2no step2question"></ul>   
             </div>
             <div div class="four_columns">
-                <button onclick="trash()" class="button">Trash</button>
-                <button onclick="incubate()" class="button incubate">Incubate</button>
+                <button onclick="trash()" class="button"><i class="far fa-trash-alt"></i> Trash</button>
+                <button onclick="incubate()" class="button incubate"><i class="fas fa-recycle"></i> Incubate</button>
             </div>
         </section>
         <section>
@@ -87,7 +81,7 @@
             </div>
         </section>
         <section>
-            <h3>
+            <h3> <i class="fas fa-history"></i>
                 Step 3. Organize
             </h3>
             <p>
@@ -96,27 +90,30 @@
             <div class="header" >
                 <ul class="step3"></ul>
                 <div class="two_columns">
-                    <button onclick="calendar()" class="btn4Calendar button">Add to calendar</button>
-                    <button onclick="list()" class="btn4List button">Action list</button>
+                    <button onclick="calendar()" class="btn4Calendar button"><i class="far fa-calendar-alt"></i> Add to calendar</button>
+                    <button onclick="list()" class="btn4List button"><i class="fas fa-tasks"></i> Action list</button>
                 </div>
             </div>
             <div class="two_columns">
                 <ul class="calendar"></ul>
-                <ul class="list"></ul>   
+                
+                <ul class="list2"></ul>    
             </div>
         </section>
-        <section>
-            <div>            
-                <h3>
+        <section>          
+            <h3> <i class="far fa-edit"></i>
                     Your to-do lists
-                </h3>
-                <p>
-                    Tasks that are still worth thinking about
-                </p>
-                <ul class="incubateList"></ul>
+            </h3>
+            <div>
+                <div>
+                    <p>
+                        Tasks that are still worth thinking about
+                    </p>
+                    <ul class="list1 check"></ul>
+                </div>
+                <div></div>
+                <div></div>
             </div>
-            <div></div>
-            <div></div>
 
         </section>
     </main>
