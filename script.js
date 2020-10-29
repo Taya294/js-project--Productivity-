@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", setData);
 //_______________ Creating interactive list ________________
 //__________________________________________________________
 
-// Create a new list item when press "enter"
+// Create a new task when press "enter"
 document.getElementById("myInput").addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -142,7 +142,7 @@ document.getElementById("myInput").addEventListener("keyup", function(event) {
     }
   }
 });
-// Add a "checked" symbol when clicking on a list item
+// Add a "checked" symbol when clicking on a list task
 const checkList = document.querySelectorAll(".check");
 for (let i of checkList) {
   i.addEventListener('click', function(ev) {
@@ -153,6 +153,7 @@ for (let i of checkList) {
   }
 }, false);
 }
+// Button that removes the checked tasks
 function clearItems() {
   const items = document.querySelectorAll(".checked");
   if(items === null) {
@@ -166,7 +167,7 @@ function clearItems() {
 //_______________ Functionality of buttons _________________
 //__________________________________________________________
 
-// Copy the contents of the last list item to the question box
+// Copy the contents of the last list task to the question box
 function lastElem(q, w) {
   if (q.children.length !== 0 || w.lastChild === null) {
     return;
@@ -174,36 +175,40 @@ function lastElem(q, w) {
   let copy = w.lastChild.cloneNode(true);
   q.append(copy);
 }
-// Delete an item in the question box
+// Delete an task in the question box
 function elemRemove(e) {
   e.children[0].remove();
 } 
-// Functionality of buttons when you click on them. Redistribute the last list item to a new list.
+// Functionality of buttons when you click on them. Redistribute the last list task to a new list.
 function optYes() {
-  const elem = document.getElementById("myUL").lastChild.lastChild.innerText;
-  const newElem = document.createElement("li");
-  newElem.append(elem);
-  if (newElem === null) {
+  if (document.getElementById("myUL").lastChild === null) {
     alert("Empty!");
-  } else {
-    document.querySelector(".ul2yes").prepend(newElem);
-    document.getElementById("myUL").lastChild.remove();
+    return;
   }
+  const text = document.getElementById("myUL").lastChild.lastChild.innerText;
+  const newElem = document.createElement("li");
+  newElem.append(text);
+
+  document.querySelector(".ul2yes").prepend(newElem);
+  document.getElementById("myUL").lastChild.remove();
+  
   elemRemove(document.querySelector(".question1"));
   lastElem(document.querySelector(".question1"), document.getElementById("myUL"));     // last element for question1 
   document.querySelector(".question1").lastChild.firstChild.remove();
   lastElem(document.querySelector(".question2"), document.querySelector(".ul2yes"));  // last element for question2
 }
 function optNo() {
-  const elem = document.getElementById("myUL").lastChild.lastChild.innerText;
-  const newElem = document.createElement("li");
-  newElem.append(elem);
-  if (elem === null) {
+  if (document.getElementById("myUL").lastChild === null) {
     alert("Empty!");
-  } else {
-    document.querySelector(".ul2no").prepend(newElem);
-    document.getElementById("myUL").lastChild.remove();
-  }
+    return;
+  } 
+  const text = document.getElementById("myUL").lastChild.lastChild.innerText;
+  const newElem = document.createElement("li");
+  newElem.append(text);
+ 
+  document.querySelector(".ul2no").prepend(newElem);
+  document.getElementById("myUL").lastChild.remove();
+  
   elemRemove(document.querySelector(".question1"));
   lastElem(document.querySelector(".question1"), document.getElementById("myUL"));  // last element for question2
   document.querySelector(".question1").lastChild.firstChild.remove();
