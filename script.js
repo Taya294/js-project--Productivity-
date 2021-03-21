@@ -3,52 +3,53 @@
 
 // The function stores data in LocalStorage
 function getData() {
-  const itemsArray = {
-  step1: [],
-  step2: {
-    yes: [], 
-    no: [],
-  },
-  question2: {
-    yes: [],
-    no: [],
-  },
-  question3: {    
-    yes: [],
-    no: [],
-  },
-  step3: {
-    calendar: [],
-    list1: [],
-    list2: [],
-  }
-  };
-
-  function dataProcessing (a, b) {
-    for (let i=0; i < a.children.length; i++) {
-      let li = a.children[i];
-      b.push(li.innerText);
-    }
-  }
-  function dataProcessingStep1 (a, b) {
-    for (let i=0; i < a.children.length; i++) {
-      let li = a.children[i];
-      b.push(li.lastChild.innerText);
-    }
-  }
-  dataProcessingStep1(document.getElementById("myUL"), itemsArray.step1);
-  dataProcessing(document.querySelector(".ul2yes"), itemsArray.step2.yes);
-  dataProcessing(document.querySelector(".ul2no"), itemsArray.step2.no);
-  dataProcessing(document.querySelector(".yes2min"), itemsArray.question2.yes);
-  dataProcessing(document.querySelector(".no2min"), itemsArray.question2.no);
-  dataProcessing(document.querySelector(".opt3yes"), itemsArray.question3.yes);
-  dataProcessing(document.querySelector(".opt3no"), itemsArray.question3.no);
-  dataProcessing(document.querySelector(".calendar"), itemsArray.step3.calendar);
-  dataProcessing(document.querySelector(".list2"), itemsArray.step3.list2);
-  dataProcessing(document.querySelector(".list1"), itemsArray.step3.list1);
-  
-  localStorage.setItem("myKey", JSON.stringify(itemsArray));
-}
+    const itemsArray = {
+      step1: [],
+      step2: {
+        yes: [], 
+        no: [],
+      },
+      question2: {
+        yes: [],
+        no: [],
+      },
+      question3: {    
+        yes: [],
+        no: [],
+      },
+      step3: {
+        calendar: [],
+        list1: [],
+        list2: [],
+      }
+      };
+    
+      function dataProcessing (a, b) {
+        for (let i=0; i < a.children.length; i++) {
+          let li = a.children[i];
+          b.push(li.innerText);
+        }
+      }
+      function dataProcessingStep1 (a, b) {
+        for (let i=0; i < a.children.length; i++) {
+          let li = a.children[i];
+          b.push(li.lastChild.innerText);
+        }
+      }
+      dataProcessingStep1(document.getElementById("myUL"), itemsArray.step1);
+      dataProcessing(document.querySelector(".ul2yes"), itemsArray.step2.yes);
+      dataProcessing(document.querySelector(".ul2no"), itemsArray.step2.no);
+      dataProcessing(document.querySelector(".yes2min"), itemsArray.question2.yes);
+      dataProcessing(document.querySelector(".no2min"), itemsArray.question2.no);
+      dataProcessing(document.querySelector(".opt3yes"), itemsArray.question3.yes);
+      dataProcessing(document.querySelector(".opt3no"), itemsArray.question3.no);
+      dataProcessing(document.querySelector(".calendar"), itemsArray.step3.calendar);
+      dataProcessing(document.querySelector(".list2"), itemsArray.step3.list2);
+      dataProcessing(document.querySelector(".list1"), itemsArray.step3.list1);
+      
+      localStorage.setItem("myKey", JSON.stringify(itemsArray));
+};
+window.addEventListener('keypress', getData);
 window.addEventListener("click", getData);
 
 //  The function that takes data from LocalStorage and builds a web page.
